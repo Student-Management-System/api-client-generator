@@ -1,0 +1,30 @@
+#!/bin/sh
+set -e
+
+GREEN='\033[0;32m'
+PURPLE='\033[0;35m'
+NC='\033[0m' # No Color
+
+echo Removing previous "$1" client...
+rm -rf ./$1/generated
+
+echo Generating "$1"...
+npx @openapitools/openapi-generator-cli generate --generator-key $1
+
+echo
+echo Copying README.md into "./$1/generated"...
+cp ./$1/README.md ./$1/generated
+
+echo
+echo Installing dependencies and building...
+cd ./$1/generated && npm install && npm run build
+
+echo
+echo -e ${GREEN}DONE!${NC}
+echo
+echo -e Follow these steps to publish the generated client to ${PURPLE}npm${NC}:
+echo
+echo 1. cd into ./$1/generated/dist
+echo 2. Inspect ./$1/generated/dist/package.json and perform necessary changes
+echo -e 3. Login with ${PURPLE}npm login${NC}
+echo -e 4. Publish with ${PURPLE}npm publish --access public${NC}

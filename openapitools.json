@@ -1,0 +1,37 @@
+{
+	"$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
+	"spaces": 2,
+	"generator-cli": {
+		"version": "5.3.0",
+		"generators": {
+			"student-mgmt": {
+				"generatorName": "typescript-angular",
+				"glob": "student-mgmt/openapi.json",
+				"output": "#{cwd}/student-mgmt/generated",
+				"additionalProperties": {
+					"npmName": "@student-mgmt/api-client",
+					"ngVersion": "12.2.12",
+					"supportsES6": "true",
+					"enumPropertyNaming": "original",
+					"prependFormOrBodyParameters": true,
+					"nullSafeAdditionalProps": true,
+					"serviceSuffix": "Api"
+				}
+			},
+			"exercise-submitter-server": {
+				"generatorName": "typescript-angular",
+				"glob": "exercise-submitter-server/openapi.json",
+				"output": "#{cwd}/exercise-submitter-server/generated",
+				"additionalProperties": {
+					"npmName": "@student-mgmt/exercise-submitter-api-client",
+					"ngVersion": "12.2.12",
+					"supportsES6": "true",
+					"enumPropertyNaming": "original",
+					"prependFormOrBodyParameters": true,
+					"nullSafeAdditionalProps": true,
+					"serviceSuffix": "Api"
+				}
+			}
+		}
+	}
+}
