@@ -5,7 +5,7 @@ Scripts to generate OpenAPI clients using [@openapitools/openapi-generator-cli](
 ## Usage
 
 ### Clone the repository
-`git clone https://github.com/Student-Management-System/API-Client-Generator`
+`git clone https://github.com/Student-Management-System/aPI-client-generator`
 
 ### Populate openapi.json
 The OpenAPI specification of each API is expected to be stored inside of **\<folder>/openapi.json**.  
