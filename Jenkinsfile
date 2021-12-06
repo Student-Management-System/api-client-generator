@@ -22,10 +22,11 @@ pipeline {
             }
         }
 
-        stage('API: Student Mgmt') {
+        stage('API Generation') {
             steps {
-                sh "fetch-openapi student-mgmt ${env.STU_MGMT_SPEC}"
-                sh 'generate student-mgmt'
+                sh 'chmod +x fetch-openapi generate'
+                sh "./fetch-openapi student-mgmt ${env.STU_MGMT_SPEC}"
+                sh './generate student-mgmt'
             }
         }
         
