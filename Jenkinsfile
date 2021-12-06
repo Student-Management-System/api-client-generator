@@ -31,10 +31,10 @@ pipeline {
         stage('API Generation') {
             steps {
                 sh 'chmod +x fetch-openapi generate'
-                sh 'echo -e '\033[0;35mGenerate API-Client: Student-Management-System\033[0m'
+                sh 'echo -e "\033[0;35mGenerate API-Client: Student-Management-System\033[0m"'
                 sh "./fetch-openapi student-mgmt ${env.STU_MGMT_SPEC}"
                 sh './generate student-mgmt'
-                sh 'echo -e '\033[0;35mGenerate API-Client: Exercise-Submitter Server\033[0m'
+                sh 'echo -e "\033[0;35mGenerate API-Client: Exercise-Submitter Server\033[0m"'
                 sh "./fetch-openapi exercise-submitter-server ${env.EXERCISE_SUBMITTER_SPEC}"
                 sh './generate exercise-submitter-server'
             }
