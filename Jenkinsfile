@@ -36,8 +36,15 @@ pipeline {
                 expression { params.API == "STU-MGMT" }
             }
             steps {
-                // TODO
-                sh 'echo "Publish Student Mgmt API Client"'
+                // Based on: https://stackoverflow.com/a/58112719
+                withCredentials([usernamePassword(credentialsId: 'NPM', usernameVariable: 'USERNAME', passwordVariable: 'NPM_PUBLSH_KEY')]) {
+                    sh 'rm -f ~/.npmrc'
+                    sh 'echo _auth=$NPM_PUBLSH_KEY >> .npmrc'
+                    sh 'echo email=elscha@sse.uni-hildesheim.de >> .npmrc'
+                    sh 'echo always-auth=true >> .npmrc'
+                    sh 'cd student-mgmt/generated/dist'
+                    sh 'npm publish --access public'
+                }
             }
         }
     }
