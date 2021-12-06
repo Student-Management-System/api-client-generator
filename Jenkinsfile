@@ -42,9 +42,9 @@ pipeline {
             steps {
                 // Based on: https://stackoverflow.com/a/58112719
                 //           https://www.jenkins.io/doc/pipeline/steps/credentials-binding/
-                withCredentials([string(credentialsId: 'NPM', passwordVariable: 'NPM_PUBLSH_KEY')]) {
+                withCredentials([string(credentialsId: 'NPM', variable: 'NPM_PUBLSH_TOKEN')]) {
                     sh 'rm -f ~/.npmrc'
-                    sh 'echo _auth=$NPM_PUBLSH_KEY >> .npmrc'
+                    sh 'echo _auth=$NPM_PUBLSH_TOKEN >> .npmrc'
                     sh 'echo email=elscha@sse.uni-hildesheim.de >> .npmrc'
                     sh 'echo always-auth=true >> .npmrc'
                     sh 'cd student-mgmt/generated/dist'
