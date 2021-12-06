@@ -4,7 +4,8 @@ pipeline {
     tools {nodejs "NodeJS 16.13"}
     
     environment {
-        STU_MGMT_SPEC = 'https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Backend/lastSuccessfulBuild/artifact/api-json'
+        STU_MGMT_SPEC = 'http://147.172.178.30:8080/stmgmt/api-json'
+        // STU_MGMT_SPEC = 'https://jenkins-2.sse.uni-hildesheim.de/job/Teaching_StudentMgmt-Backend/lastSuccessfulBuild/artifact/api-json'
     }
     
     stages {
