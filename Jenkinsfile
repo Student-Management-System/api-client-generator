@@ -43,10 +43,8 @@ pipeline {
                 // Based on: https://stackoverflow.com/a/58112719
                 //           https://www.jenkins.io/doc/pipeline/steps/credentials-binding/
                 withCredentials([string(credentialsId: 'NPM', variable: 'NPM_PUBLSH_TOKEN')]) {
-                    sh 'rm -f ~/.npmrc'
-                    sh 'echo _auth=$NPM_PUBLSH_TOKEN >> .npmrc'
-                    sh 'echo email=elscha@sse.uni-hildesheim.de >> .npmrc'
-                    sh 'echo always-auth=true >> .npmrc'
+                    sh 'rm -f .npmrc'
+                    sh 'echo //registry.npmjs.org/:_authToken=$NPM_PUBLSH_TOKEN >> .npmrc'
                     dir('student-mgmt/generated/dist') {
                         sh 'npm publish --access public'
                     }
