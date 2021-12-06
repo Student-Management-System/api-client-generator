@@ -28,5 +28,15 @@ pipeline {
                 sh 'generate student-mgmt'
             }
         }
+        
+        stage('Publish: Student Mgmt') {
+            when {
+                expression { params.API == "STU-MGMT" }
+            }
+            steps {
+                // TODO
+                sh 'echo "Publish Student Mgmt API Client"'
+            }
+        }
     }
 }
