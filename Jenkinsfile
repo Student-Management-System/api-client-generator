@@ -1,5 +1,9 @@
 pipeline {
     agent any
+    
+    options {
+        ansiColor('xterm')
+    }
 
     tools {nodejs "NodeJS 16.13"}
     
@@ -37,7 +41,8 @@ pipeline {
             }
             steps {
                 // Based on: https://stackoverflow.com/a/58112719
-                withCredentials([usernamePassword(credentialsId: 'NPM', usernameVariable: 'USERNAME', passwordVariable: 'NPM_PUBLSH_KEY')]) {
+                //           https://www.jenkins.io/doc/pipeline/steps/credentials-binding/
+                withCredentials([string(credentialsId: 'NPM', passwordVariable: 'NPM_PUBLSH_KEY')]) {
                     sh 'rm -f ~/.npmrc'
                     sh 'echo _auth=$NPM_PUBLSH_KEY >> .npmrc'
                     sh 'echo email=elscha@sse.uni-hildesheim.de >> .npmrc'
