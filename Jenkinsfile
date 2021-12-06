@@ -47,8 +47,9 @@ pipeline {
                     sh 'echo _auth=$NPM_PUBLSH_TOKEN >> .npmrc'
                     sh 'echo email=elscha@sse.uni-hildesheim.de >> .npmrc'
                     sh 'echo always-auth=true >> .npmrc'
-                    sh 'cd student-mgmt/generated/dist'
-                    sh 'npm publish --access public'
+                    dir('student-mgmt/generated/dist') {
+                        sh 'npm publish --access public'
+                    }
                 }
             }
         }
