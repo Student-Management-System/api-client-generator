@@ -22,29 +22,21 @@ pipeline {
             }
         }
 
-        stage('Install Dependencies') {
+        stage('Preparation') {
             steps {
                 sh 'npm install @openapitools/openapi-generator-cli'
-            }
-        }
-
-        stage('API Generation') {
-            steps {
                 sh 'chmod +x fetch-openapi generate'
-                sh 'echo -e "\033[0;35mGenerate API-Client: Student-Management-System\033[0m"'
-                sh "./fetch-openapi student-mgmt ${env.STU_MGMT_SPEC}"
-                sh './generate student-mgmt'
-                sh 'echo -e "\033[0;35mGenerate API-Client: Exercise-Submitter Server\033[0m"'
-                sh "./fetch-openapi exercise-submitter-server ${env.EXERCISE_SUBMITTER_SPEC}"
-                sh './generate exercise-submitter-server'
             }
         }
         
-        stage('Publish: Student Mgmt') {
+        stage('Student Mgmt') {
             when {
                 expression { params.API == "STU-MGMT" }
             }
             steps {
+                sh "./fetch-openapi student-mgmt ${env.STU_MGMT_SPEC}"
+                sh './generate student-mgmt'
+                
                 // Based on: https://stackoverflow.com/a/58112719
                 //           https://www.jenkins.io/doc/pipeline/steps/credentials-binding/
                 withCredentials([string(credentialsId: 'NPM', variable: 'NPM_PUBLSH_TOKEN')]) {
@@ -57,11 +49,14 @@ pipeline {
             }
         }
         
-        stage('Publish: Exercise Submitter') {
+        stage('Exercise Submitter') {
             when {
                 expression { params.API == "EXERCISE-SUBMITTER" }
             }
             steps {
+                sh "./fetch-openapi exercise-submitter-server ${env.EXERCISE_SUBMITTER_SPEC}"
+                sh './generate exercise-submitter-server'
+                
                 // Based on: https://stackoverflow.com/a/58112719
                 //           https://www.jenkins.io/doc/pipeline/steps/credentials-binding/
                 withCredentials([string(credentialsId: 'NPM', variable: 'NPM_PUBLSH_TOKEN')]) {
@@ -71,6 +66,14 @@ pipeline {
                         sh 'npm publish --access public'
                     }
                 }
+            }
+        }
+        
+        stage('Archives') {
+            steps {
+                sh 'wget $(npm view @student-mgmt/api-client dist.tarball)'
+                sh 'wget $(npm view @student-mgmt/exercise-submitter-api-client dist.tarball)'
+                archiveArtifacts artifacts: '*.tgz'
             }
         }
     }
