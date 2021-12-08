@@ -32,6 +32,20 @@
 					"serviceSuffix": "Api"
 				}
 			}
+            "sparky-service": {
+				"generatorName": "typescript-angular",
+				"glob": "sparky-service/openapi.json",
+				"output": "#{cwd}/sparky-service/generated",
+				"additionalProperties": {
+					"npmName": "@student-mgmt/sparky-service-api-client",
+					"ngVersion": "12.2.12",
+					"supportsES6": "true",
+					"enumPropertyNaming": "original",
+					"prependFormOrBodyParameters": true,
+					"nullSafeAdditionalProps": true,
+					"serviceSuffix": "Api"
+				}
+			}
 		}
 	}
 }
