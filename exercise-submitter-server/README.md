@@ -1,4 +1,4 @@
-# @student-mgmt/api-client
+# @student-mgmt/exercise-submitter-api-client
 
 **Angular client for:**  
 https://github.com/Student-Management-System/exercise-submitter-server
@@ -12,7 +12,7 @@ In your Angular project:
 
 ```ts
 // without configuring providers
-import { ApiModule } from '@student-mgmt/api-client';
+import { ApiModule } from '@student-mgmt/exercise-submitter-api-client';
 import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
@@ -31,7 +31,7 @@ export class AppModule {}
 
 ```ts
 // configuring providers
-import { ApiModule, Configuration, ConfigurationParameters } from '@student-mgmt/api-client';
+import { ApiModule, Configuration, ConfigurationParameters } from '@student-mgmt/exercise-submitter-api-client';
 
 export function apiConfigFactory (): Configuration {
   const params: ConfigurationParameters = {
@@ -51,7 +51,7 @@ export class AppModule {}
 
 ```ts
 // configuring providers with an authentication service that manages your access tokens
-import { ApiModule, Configuration } from '@student-mgmt/api-client';
+import { ApiModule, Configuration } from '@student-mgmt/exercise-submitter-api-client';
 
 @NgModule({
     imports: [ ApiModule ],
@@ -75,7 +75,7 @@ export class AppModule {}
 ```
 
 ```ts
-import { DefaultApi } from '@student-mgmt/api-client';
+import { DefaultApi } from '@student-mgmt/exercise-submitter-api-client';
 
 export class AppComponent {
     constructor(private apiGateway: DefaultApi) { }
@@ -113,7 +113,7 @@ export class AppModule {
 If different than the generated base path, during app bootstrap, you can provide the base path to your service.
 
 ```ts
-import { BASE_PATH } from '@student-mgmt/api-client';
+import { BASE_PATH } from '@student-mgmt/exercise-submitter-api-client';
 
 bootstrap(AppComponent, [
     { provide: BASE_PATH, useValue: 'https://your-web-service.com' },
@@ -122,7 +122,7 @@ bootstrap(AppComponent, [
 or
 
 ```ts
-import { BASE_PATH } from '@student-mgmt/api-client';
+import { BASE_PATH } from '@student-mgmt/exercise-submitter-api-client';
 
 @NgModule({
     imports: [],
@@ -146,7 +146,7 @@ export const environment = {
 
 In the src/app/app.module.ts:
 ```ts
-import { BASE_PATH } from '@student-mgmt/api-client';
+import { BASE_PATH } from '@student-mgmt/exercise-submitter-api-client';
 import { environment } from '../environments/environment';
 
 @NgModule({
