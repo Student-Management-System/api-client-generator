@@ -95,7 +95,7 @@ pipeline {
             steps {
                 sh 'wget $(npm view @student-mgmt/api-client dist.tarball)'
                 sh 'wget $(npm view @student-mgmt/exercise-submitter-api-client dist.tarball)'
-                sh 'wget $(npm view @student-mgmt/sparky-service dist.tarball)'
+                sh 'wget $(npm view @student-mgmt/sparky-service-api-client dist.tarball)'
                 archiveArtifacts artifacts: '*.tgz'
             }
         }
