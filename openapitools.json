@@ -31,7 +31,7 @@
 					"nullSafeAdditionalProps": true,
 					"serviceSuffix": "Api"
 				}
-			}
+			},
             "sparky-service": {
 				"generatorName": "typescript-angular",
 				"glob": "sparky-service/openapi.json",
