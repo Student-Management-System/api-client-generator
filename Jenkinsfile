@@ -26,7 +26,7 @@ pipeline {
         stage('Preparation') {
             steps {
                 sh 'npm install @openapitools/openapi-generator-cli'
-                sh 'chmod +x fetch-openapi generate'
+                sh 'chmod +x fetch-openapi generate remove-snapshot'
             }
         }
         
