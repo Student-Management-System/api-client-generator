@@ -2,7 +2,7 @@
 	"$schema": "node_modules/@openapitools/openapi-generator-cli/config.schema.json",
 	"spaces": 2,
 	"generator-cli": {
-		"version": "5.3.0",
+		"version": "6.0.1",
 		"generators": {
 			"student-mgmt": {
 				"generatorName": "typescript-angular",
@@ -10,7 +10,7 @@
 				"output": "#{cwd}/student-mgmt/generated",
 				"additionalProperties": {
 					"npmName": "@student-mgmt/api-client",
-					"ngVersion": "12.2.12",
+					"ngVersion": "14.2.3",
 					"supportsES6": "true",
 					"enumPropertyNaming": "original",
 					"prependFormOrBodyParameters": true,
@@ -24,7 +24,7 @@
 				"output": "#{cwd}/exercise-submitter-server/generated",
 				"additionalProperties": {
 					"npmName": "@student-mgmt/exercise-submitter-api-client",
-					"ngVersion": "12.2.12",
+					"ngVersion": "14.2.3",
 					"supportsES6": "true",
 					"enumPropertyNaming": "original",
 					"prependFormOrBodyParameters": true,
@@ -38,7 +38,7 @@
 				"output": "#{cwd}/sparky-service/generated",
 				"additionalProperties": {
 					"npmName": "@student-mgmt/sparky-service-api-client",
-					"ngVersion": "12.2.12",
+					"ngVersion": "14.2.3",
 					"supportsES6": "true",
 					"enumPropertyNaming": "original",
 					"prependFormOrBodyParameters": true,
